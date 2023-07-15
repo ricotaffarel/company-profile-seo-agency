@@ -10,3 +10,9 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
 </footer>
+    </div>
+</footer>
+    </div>
+</footer>
+    </div>
+</footer>

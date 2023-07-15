@@ -60,5 +60,4 @@ Route::group(['middleware' => ['auth', 'checkrole:rico@gmail.com']], function ()
     Route::resource('administrator/profile', ProfileController::class)->names('administrator.profile');
     Route::resource('administrator/project-gallery', ProjectGalleryController::class)->names('administrator.project-gallery');
     Route::resource('administrator/service-testimony', ServiceTestimonyController::class)->names('administrator.service-testimony');
-    Route::resource('administrator/service-testimony', ServiceTestimonyController::class)->names('administrator.service-testimony');
 });

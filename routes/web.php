@@ -13,6 +13,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\MyTeamController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectGalleryController;
 use App\Http\Controllers\ServiceTestimonyController;
@@ -34,9 +35,14 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login-administrator', [AuthController::class, 'login'])->name('login');
     Route::post('/login-administrator', [AuthController::class, 'dologin']);
-    Route::get('/', function () {
-        return view('landing_page');
-    });
+    Route::get('/', [GuestController::class, 'index'])->name('home');
+    Route::get('/about', [GuestController::class, 'about'])->name('about');
+    Route::get('/service', [GuestController::class, 'serviceCategory'])->name('service-category');
+    Route::get('/service/{category}', [GuestController::class, 'service'])->name('service');
+    Route::get('/portofolio', [GuestController::class, 'portofolio'])->name('portofolio');
+    Route::get('/team', [GuestController::class, 'team'])->name('team');
+    Route::get('/testimony', [GuestController::class, 'testimony'])->name('testimony');
+    Route::get('/contact', [GuestController::class, 'contact'])->name('contact');
 });
 
 // untuk superadmin dan admin

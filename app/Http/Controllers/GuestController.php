@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Mitra;
 use App\Models\MyTeam;
 use App\Models\Portofolio;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceTestimony;
 use App\Models\Slider;
+use App\Models\Visitor;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -25,6 +28,7 @@ class GuestController extends Controller
         $portofolio = Portofolio::latest()->get();
         $testimony = ServiceTestimony::latest()->get();
         $team = MyTeam::latest()->get();
+        $mitra = Mitra::latest()->get();
 
         $data = [
             'slidder' => $slidder,
@@ -33,7 +37,20 @@ class GuestController extends Controller
             'portofolio' => $portofolio,
             'testimony' => $testimony,
             'team' => $team,
+            'mitra' => $mitra,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.home', $data);
     }
 
@@ -46,6 +63,18 @@ class GuestController extends Controller
             'about' => $about,
             'team' => $team,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.about', $data);
     }
 
@@ -56,6 +85,18 @@ class GuestController extends Controller
         $data = [
             'service_category' => $service_category,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.service-category', $data);
     }
 
@@ -67,6 +108,18 @@ class GuestController extends Controller
         $data = [
             'service' => $service,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.service', $data);
     }
 
@@ -77,6 +130,18 @@ class GuestController extends Controller
         $data = [
             'portofolio' => $portofolio,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.portofolio', $data);
     }
 
@@ -87,6 +152,18 @@ class GuestController extends Controller
         $data = [
             'team' => $team,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.team', $data);
     }
 
@@ -97,11 +174,35 @@ class GuestController extends Controller
         $data = [
             'testimony' => $testimony,
         ];
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.testimony', $data);
     }
 
     public function contact()
     {
+
+        $ipUsers = $_SERVER['REMOTE_ADDR'];
+        $url = url('/');
+        $visitor = Visitor::where('date', date('Y-m-d'))->where('ip', $ipUsers)->where('url', $url)->get();
+        if (count($visitor) == 0) {
+            Visitor::create([
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'url' => url('/'),
+                'id' => Str::uuid(),
+                'date' => 'date'
+            ]);
+        }
         return view('guest.contact',);
     }
 }

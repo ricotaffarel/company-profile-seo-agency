@@ -96,6 +96,60 @@ $portofolio_category = PortofolioCategory::all();
         </div>
     </div>
 
+    <!-- mitra -->
+    <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <h6 class="position-relative d-inline text-primary ps-4">Our Client</h6>
+        <h2 class="mt-2">Client here</h2>
+    </div>
+    <div class="container-xxl bg-primary testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <div id="mitraCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @forelse ($mitra as $index => $mitra)
+                <div class="carousel-item @if($index === 0) active @endif">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4">
+                                <div class="card shadow testimonial-card">
+                                    <div class="card-body text-center">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <div>
+                                                <img class="img-fluid rounded w-50" src="{{$mitra->image}}" alt="">
+                                                <small>{{ $mitra->name }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card shadow testimonial-card">
+                                    <div class="card-body text-center">
+                                        <p class="card-text">No testimonials available.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mitraCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mitraCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
     <!-- project -->
     <div class="container-xxl py-5">
         <div class="container px-lg-5">
@@ -215,8 +269,5 @@ $portofolio_category = PortofolioCategory::all();
             </div>
         </div>
     </div>
-
 </div>
-
-
 @endsection

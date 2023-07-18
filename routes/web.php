@@ -43,6 +43,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/team', [GuestController::class, 'team'])->name('team');
     Route::get('/testimony', [GuestController::class, 'testimony'])->name('testimony');
     Route::get('/contact', [GuestController::class, 'contact'])->name('contact');
+    Route::post('/save-visitor', [VisitorController::class, 'store']);
 });
 
 // untuk superadmin dan admin

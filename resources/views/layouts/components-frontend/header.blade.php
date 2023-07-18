@@ -1,6 +1,8 @@
 @php
+use App\Models\Profile;
 use App\Models\Menu;
 $menu = Menu::latest()->get();
+$profile = Profile::latest()->get();
 @endphp
 
 <!-- Spinner Start -->
@@ -14,8 +16,7 @@ $menu = Menu::latest()->get();
 <div class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
         <a href="" class="navbar-brand p-0">
-            <h1 class="m-0"><i class="fa fa-search me-2"></i>SEO<span class="fs-5">Master</span></h1>
-            <!-- <img src="img/logo.png" alt="Logo"> -->
+            <img class="img-fluid rounded w-100" src="{{$profile[0]->image}}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>

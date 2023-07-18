@@ -269,5 +269,31 @@ $portofolio_category = PortofolioCategory::all();
             </div>
         </div>
     </div>
+
+
+    <!-- blog -->
+    <div class="container-xxl py-5">
+        <div class="container px-lg-5">
+            <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                <h6 class="position-relative d-inline text-primary ps-4">Blog</h6>
+                <h2 class="mt-2">Blog Service</h2>
+            </div>
+            <div class="row g-4">
+                @forelse ($blog as $blog)
+                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: zoomIn;">
+                    <a href="{{ route('blog', $blog->id) }}">
+                        <div class="service-item d-flex flex-column justify-content-center text-center rounded">
+                            <center><img class="img-fluid w-70" src="{{$blog->image}}" alt=""></center>
+                            <h5 class="mb-3 mt-2">{{$blog->title}}</h5>
+                            <p>{{$blog->author}}</p>
+                        </div>
+                    </a>
+                </div>
+                @empty
+                <p>No data available.</p>
+                @endforelse
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -37,6 +37,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login-administrator', [AuthController::class, 'dologin']);
     Route::get('/', [GuestController::class, 'index'])->name('home');
     Route::get('/about', [GuestController::class, 'about'])->name('about');
+    Route::get('/blog/{blog}', [GuestController::class, 'blog'])->name('blog');
     Route::get('/service', [GuestController::class, 'serviceCategory'])->name('service-category');
     Route::get('/service/{category}', [GuestController::class, 'service'])->name('service');
     Route::get('/portofolio', [GuestController::class, 'portofolio'])->name('portofolio');
